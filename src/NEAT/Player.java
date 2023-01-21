@@ -45,8 +45,8 @@ public class Player{
 			else {
 				dead = true;
 			}
-			score = 1/(error/step);
-			success = correct/step;
+			score = step/error;
+			success =  Math.floorDiv(100*correct,step);
 		}
 	}
 	void think(){
@@ -60,7 +60,7 @@ public class Player{
 	    }
 	  }
 	  error+=Math.pow(max-xors[2],2);
-	  if(Math.pow(max-xors[2],2) < 0.25) {
+	  if(Math.abs(max-xors[2]) < 0.5) {
 		  correct++;
 	  }
 	  

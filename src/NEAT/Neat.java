@@ -6,7 +6,8 @@ public class Neat {
 	
 	public Population pop;
 	
-	public Neat() {
-		pop = new Population(1000);
+	public Neat(int size) {
+		pop = new Population(size);
 	}
+
 }

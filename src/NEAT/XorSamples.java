@@ -7,16 +7,26 @@ public class XorSamples {
 	public static ArrayList<int[]> sam = new ArrayList<>();
 	
 	static {
-		for(int i = 0;i<2;i++) {
-			for(int j = 0;j<2;j++) {
-				sam.add(new int[3]);
-				int index = sam.size()-1;
-				sam.get(index)[0] = i;
-				sam.get(index)[1] = j;
-				sam.get(index)[2] = i^j;
-			}
-		}
 		
+		sam.add(new int[3]);
+		sam.get(0)[0] = 0;
+		sam.get(0)[1] = 0;
+		sam.get(0)[2] = 0;
+		
+		sam.add(new int[3]);
+		sam.get(1)[0] = 0;
+		sam.get(1)[1] = 1;
+		sam.get(1)[2] = 1;
+		
+		sam.add(new int[3]);
+		sam.get(2)[0] = 1;
+		sam.get(2)[1] = 0;
+		sam.get(2)[2] = 1;
+		
+		sam.add(new int[3]);
+		sam.get(3)[0] = 1;
+		sam.get(3)[1] = 1;
+		sam.get(3)[2] = 0;
 	}
 	public XorSamples() {
 		//do nothing

@@ -7,7 +7,8 @@ class ConnectionHistory {
 	int toNode;
 	int innovationNumber;
 	ArrayList<Integer> innovationNumbers = new ArrayList<Integer>(); 
-																					@SuppressWarnings("unchecked")
+																					
+	@SuppressWarnings("unchecked")
 	ConnectionHistory(int from, int to, int inno, ArrayList<Integer> innovationNos) {
 		fromNode = from;
 	    toNode = to;

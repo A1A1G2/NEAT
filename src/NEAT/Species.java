@@ -85,7 +85,8 @@ class Species {
 	    return totalDiff/matching;
 	  }
 	  
-	  void sortSpecies() {
+	  @SuppressWarnings("unchecked")
+	void sortSpecies() {
 
 	    ArrayList<Player> temp = new ArrayList<Player>();
 

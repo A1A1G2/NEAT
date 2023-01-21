@@ -5,7 +5,7 @@ import java.util.ArrayList;
 class Population {
 	  ArrayList<Player> pop = new ArrayList<Player>();
 	  Player bestPlayer;//the best ever player 
-	  double bestScore =0;//the score of the best ever player
+	  double bestScore =0;//the score of the greatest score
 	  int gen;
 	  ArrayList<ConnectionHistory> innovationHistory = new ArrayList<ConnectionHistory>();
 	  ArrayList<Player> genPlayers = new ArrayList<Player>();
@@ -49,7 +49,6 @@ class Population {
 	    Player tempBest =  species.get(0).players.get(0);
 	    tempBest.gen = gen;
 
-
 	    if (tempBest.score > bestScore) {
 	      System.out.println("old best:"+ bestScore);
 	      System.out.println("new best:"+ tempBest.score);
@@ -58,7 +57,8 @@ class Population {
 	    }
 	  }
 
-	  void naturalSelection() {
+	  @SuppressWarnings("unchecked")
+	void naturalSelection() {
 	    speciate();
 	    calculateFitness();
 	    sortSpecies();
@@ -72,17 +72,17 @@ class Population {
 	    killBadSpecies();
 
 
-	    System.out.println("generation "+ gen+ " Number of mutations: "+ innovationHistory.size()+ " species: " + species.size()+ " <<<<<<<<<<<<<");
+	    System.out.println("Generation: "+ gen+ " Number of mutations: "+ innovationHistory.size()+ " species: " + species.size()+ " <<<<<<<<<<<<<");
 
 
 	    double averageSum = getAvgFitnessSum();
 	    ArrayList<Player> children = new ArrayList<Player>();
 	    System.out.println("Species:");               
 	    for (int j = 0; j < species.size(); j++) {
-	      System.out.println("Species "+j); 
+	      System.out.println("Species "+j+" ______________________"); 
 	      System.out.println("best unadjusted fitness:"+ species.get(j).bestFitness);
 	      for (int i = 0; i < species.get(j).players.size(); i++) {
-	    	System.out.println("player " + i+ ": fitness: "+ " % " +species.get(j).players.get(i).success +" "+  species.get(j).players.get(i).fitness+ " score " + species.get(j).players.get(i).score+ ' ');
+	    	System.out.println("player " + i+ ": success: "+ " % " +species.get(j).players.get(i).success +" \nfitness "+  species.get(j).players.get(i).fitness+ " score " + species.get(j).players.get(i).score+ ' ');
 	      }
 	      children.add(species.get(j).champ.clone());
 
@@ -96,7 +96,7 @@ class Population {
 	      children.add(species.get(0).giveMeBaby(innovationHistory));
 	    }
 	    pop.clear();
-	    pop = (ArrayList)children.clone();
+	    pop = (ArrayList<Player>)children.clone();
 	    gen+=1;
 	    for (int i = 0; i< pop.size(); i++) {
 	      pop.get(i).brain.generateNetwork();
